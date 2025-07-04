@@ -218,15 +218,15 @@ body.dark-mode .app-title { color: var(--text-primary); }
 	transition: color var(--transition-speed);
 }
 .module-card.span-2 { grid-column: span 2; }
-@media (max-width: 575px) { .module-card.span-2 { grid-column: span 1; } }
+
 
 /* Estilo especial para o botão da IA */
 .module-card-ai {
-    /* A cor da borda já muda com o tema (azul/roxo) usando a variável --primary-color */
-    border: 2px solid var(--primary-color);
+	/* A cor da borda já muda com o tema (azul/roxo) usando a variável --primary-color */
+	border: 2px solid var(--primary-color);
 }
 .module-card-ai:hover {
-    border-color: var(--primary-dark);
+	border-color: var(--primary-dark);
 }
 
 
@@ -368,19 +368,164 @@ body.dark-mode .app-title { color: var(--text-primary); }
 	40%, 60% { transform: translate3d(4px, 0, 0); }
 }
 
-/* Media Queries para Mobile */
+/* =================================================================== */
+/* CSS MELHORADO PARA MOBILE                                           */
+/* =================================================================== */
+
 @media (max-width: 768px) {
-	body { padding: 10px 5px; }
-	.main-container { padding: 15px 5px; }
-	.homepage-card { padding: 25px; }
-	#selectedAvatarDisplay { width: 90px; height: 90px; }
-	.app-title { font-size: 2rem; }
-	.modules-grid { grid-template-columns: 1fr; gap: 15px; }
+	body {
+		padding: 20px 10px;
+	}
+	.main-container {
+		padding: 15px 5px;
+	}
+	.homepage-card {
+		padding: 25px 20px;
+		border-radius: 16px;
+	}
+	.dark-mode-toggle {
+		top: 15px;
+		right: 15px;
+		width: 40px;
+		height: 40px;
+	}
+	.icon-container {
+		width: 20px;
+		height: 20px;
+	}
+	.moon-icon, .sun-icon {
+		font-size: 1.2rem;
+	}
+	.app-header {
+		padding-bottom: 25px;
+		margin-bottom: 30px;
+	}
+	#selectedAvatarDisplay {
+		width: 95px;
+		height: 95px;
+	}
+	.edit-avatar-icon {
+		width: 28px;
+		height: 28px;
+	}
+	.edit-avatar-icon svg {
+		width: 14px;
+		height: 14px;
+	}
+	.app-title {
+		font-size: 2.1rem;
+	}
+	.modules-grid {
+		grid-template-columns: 1fr;
+		gap: 18px;
+	}
+	.module-card.span-2 {
+		grid-column: span 1;
+	}
+	.module-card {
+		padding: 20px;
+	}
+	.module-card-title {
+		font-size: 1.15rem;
+	}
+	.pin-modal-content, .module-modal-content, .avatar-modal-content-box {
+		width: 95%;
+		padding: 30px 25px;
+	}
+	.module-modal-content h2 {
+		font-size: 1.5rem;
+	}
+	#iframeViewer {
+		padding: 10px;
+	}
+	.iframe-window {
+		border-radius: 12px;
+	}
 }
+
 @media (max-width: 480px) {
-	.app-title { font-size: 1.8rem; }
-	.pin-modal-content, .module-modal-content { padding: 20px; }
-	#iframeViewer { padding: 15px; }
+	body {
+		padding: 10px 5px;
+	}
+	.main-container {
+		padding: 10px 0;
+	}
+	.homepage-card {
+		padding: 20px 15px;
+		border-radius: 12px;
+	}
+	.app-header {
+		padding-bottom: 20px;
+		margin-bottom: 25px;
+	}
+	#selectedAvatarDisplay {
+		width: 80px;
+		height: 80px;
+		border-width: 3px;
+	}
+	.app-title {
+		font-size: 1.8rem;
+		letter-spacing: -0.5px;
+	}
+	.modules-grid {
+		gap: 15px;
+	}
+	.module-card {
+		padding: 18px 15px;
+		border-radius: 10px;
+	}
+    .module-card .section-icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 12px;
+    }
+	.module-card-title {
+		font-size: 1.1rem;
+	}
+	.pin-modal-content, .module-modal-content, .avatar-modal-content-box {
+		padding: 25px 15px;
+		width: 92%;
+	}
+	.pin-modal-content h2, .module-modal-content h2 {
+		font-size: 1.3rem;
+	}
+    .pin-modal-content p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+	#pinInput {
+		padding: 12px;
+		font-size: 1.4rem;
+		margin-bottom: 15px;
+	}
+	#submitPinButton {
+		padding: 12px;
+		font-size: 1rem;
+	}
+	#moduleModalButtonsContainer {
+		gap: 12px;
+	}
+	.button-action {
+		padding: 12px 15px;
+		font-size: 0.9rem;
+	}
+	.avatar-grid {
+		gap: 10px;
+		padding: 10px;
+		grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+	}
+	#iframeViewer {
+		padding: 0; /* Tela cheia para imersão */
+	}
+	.iframe-window {
+		border-radius: 0; /* Remove bordas arredondadas no modo tela cheia */
+	}
+    .iframe-header {
+        padding: 5px 10px;
+    }
+    #closeIframeButton {
+        font-size: 1.6rem;
+    }
 }
 </style>
 </head>
@@ -403,7 +548,7 @@ body.dark-mode .app-title { color: var(--text-primary); }
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
 				</div>
 			</div>
-			<h1 class="app-title">Plataforma de Max		 RGM: 3889292</h1>
+			<h1 class="app-title">Plataforma de Max RGM: 3889292</h1>
 		</header>
 		<main id="modulesContainer" class="modules-grid"></main>
 	</div>
@@ -515,7 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const card = document.createElement('div');	
 			card.className = 'module-card';	
 			if (module.span2) { card.classList.add('span-2'); }
-            
+			
 			// Adiciona a classe especial para o card da IA para aplicar a borda colorida
 			if (module.specialStyle === 'ai-assistant') { card.classList.add('module-card-ai'); }
 
@@ -599,10 +744,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		const module = CONFIG.modulesData[moduleId];
 
 		if (module.directAction) {
-            // Se o módulo tem uma ação direta (como a IA), abre o iframe direto
+			// Se o módulo tem uma ação direta (como a IA), abre o iframe direto
 			openIframeViewer(module.actions[0].url);
 		} else {
-            // Senão, abre o modal com as opções
+			// Senão, abre o modal com as opções
 			openModuleModal(moduleId);
 		}
 	});
