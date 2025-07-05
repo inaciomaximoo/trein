@@ -239,14 +239,12 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
 /* 6. RESPONSIVIDADE (MEDIA QUERIES)                                   */
 /* =================================================================== */
 
-/* Layout Fixo para Desktop (CORREÇÃO) */
 @media (min-width: 769px) {
     .modules-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: min-content; /* Para as linhas se ajustarem ao conteúdo */
+        grid-auto-rows: min-content;
     }
-    /* Forçando a ordem e o tamanho dos cards no desktop */
     [data-module-id="agenda"] { grid-area: 1 / 1 / 2 / 3; }
     [data-module-id="anamnese"] { grid-area: 1 / 3 / 2 / 4; }
     [data-module-id="prontuario"] { grid-area: 2 / 1 / 3 / 2; }
@@ -254,15 +252,18 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
     [data-module-id="prescricoes"] { grid-area: 2 / 3 / 3 / 4; }
     [data-module-id="financeiro"] { grid-area: 3 / 1 / 4 / 2; }
     [data-module-id="automacao"] { grid-area: 3 / 2 / 4 / 3; }
-    /* Posição corrigida para o painel de depoimentos */
     [data-module-id="depoimentos"] { grid-area: 3 / 3 / 5 / 4; }
     [data-module-id="assistenteIA"] { grid-area: 4 / 1 / 5 / 3; }
 }
 
 @media (max-width: 768px) {
-	body { padding: 0; justify-content: flex-start; }
-    .main-container { padding: 20px; }
-	.homepage-card { padding: 30px; border-radius: 0; min-height: 100dvh; border-left: none; border-right: none; }
+	body { padding: 0; justify-content: flex-start; align-items: flex-start; }
+    .main-container { padding: 15px; }
+	.homepage-card { 
+        padding: 30px; 
+        min-height: auto; /* Deixa o conteúdo definir a altura */
+        border-radius: 24px; /* Cantos arredondados */
+    }
 	.dark-mode-toggle { top: 20px; right: 20px; width: 44px; height: 44px; }
 	.icon-container { width: 22px; height: 22px; }
 	.moon-icon, .sun-icon { font-size: 1.4rem; }
@@ -286,14 +287,13 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
 }
 
 @media (max-width: 480px) {
-    .main-container { padding: 15px; }
-	.homepage-card { padding: 25px 20px; }
+    .main-container { padding: 10px; }
+	.homepage-card { padding: 25px 20px; border-radius: 20px; }
 	.app-header { margin-bottom: 30px; }
 	#selectedAvatarDisplay { width: 90px; height: 90px; }
 	.app-title { font-size: 1.9rem; }
 	.app-subtitle { font-size: 1rem; }
 	.modules-grid { gap: 18px; }
-    /* A maioria dos cards em dupla */
     .module-card { padding: 20px; }
     .module-card .section-icon { width: 38px; height: 38px; }
 	.module-card-title { font-size: 1rem; line-height: 1.3; }
@@ -321,7 +321,7 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
 		</div>
 		<header class="app-header">
 			<div class="header-avatar-container" id="headerAvatarContainer" title="Clique para mudar o avatar">
-				<img id="selectedAvatarDisplay" src="https://i.imgur.com/rJXV7uR.png" alt="Avatar">
+				<img id="selectedAvatarDisplay" src="https://i.imgur.com/OhiZQww.png" alt="Avatar">
 				<div class="edit-avatar-icon">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
 				</div>
@@ -453,10 +453,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			const module = CONFIG.modulesData[moduleId];
 			const card = document.createElement('div');	
 			card.className = 'module-card';
-            // Adiciona o atributo de dados para o CSS poder selecionar o card
             card.dataset.moduleId = moduleId;
 			if (module.span2) { card.classList.add('span-2'); }
-			if (module.spanRows) { card.classList.add('span-rows-2'); } // Usar classe para consistência
+			if (module.spanRows) { card.classList.add('span-rows-2'); }
 			if (module.specialStyle) { card.classList.add(`module-card-${module.specialStyle}`); }
 			card.style.animationDelay = `${cardIndex * 60}ms`;
 			
@@ -624,18 +623,14 @@ const CONFIG = {
 	authorizedIPs: [],	
 	validPins: ["MED2025", "GESTOR123"],
 	avatarImageLinks: [ 
-        "https://i.imgur.com/rJXV7uR.png", "https://i.imgur.com/DaNsN4q.png",
-        "https://i.imgur.com/DXkoPU0.png", "https://i.imgur.com/5jDryIk.png",
-        "https://i.imgur.com/ya6quMM.png", "https://i.imgur.com/1G7xknr.png",
-        "https://i.imgur.com/Il4owIz.png", "https://i.imgur.com/P95Sxw6.png",
-        "https://i.imgur.com/ISp1O9O.png"
+        "https://i.imgur.com/OhiZQww.png"
     ],
 	get defaultAvatar() { return this.avatarImageLinks[0]; },
     
     rankingMedicos: [
-        { nome: 'Dr. Max Lima', estrelas: 5, top: true }, { nome: 'Dra. Livia Andrade', estrelas: 5, top: false },
-        { nome: 'Dr. Carlos Borges', estrelas: 4, top: false }, { nome: 'Dra. Helena Costa', estrelas: 4, top: false },
-        { nome: 'Dr. Arthur Moreira', estrelas: 4, top: false }, { nome: 'Dra. Beatriz Santos', estrelas: 3, top: false },
+        { nome: 'Dr. Max ', estrelas: 5, top: true }, { nome: 'Dra. Livia ', estrelas: 5, top: false },
+        { nome: 'Dr. Carlos ', estrelas: 4, top: false }, { nome: 'Dra. Helena ', estrelas: 4, top: false },
+        { nome: 'Dr. Arthur Moreira', estrelas: 4, top: false }, { nome: 'Dra. Beatriz ', estrelas: 3, top: false },
     ],
 
 	depoimentosData: [
@@ -733,7 +728,6 @@ const CONFIG = {
             directAction: true,
 			actions: [ { name: 'Configurar Lembrete (WhatsApp)', url: 'https://inaciomaximoo.github.io/trein/MedIA/lembretes.html' } ]
 		},
-        // A ordem aqui não importa mais para o layout do desktop, que agora é fixo com CSS.
 		'assistenteIA': {
 			title: 'Assistente IA',
 			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l.346.666L13.018 5l.69.346.666.346L15 6.018l.346-.69.346-.666L15.018 4l-.69-.346-.666-.346L13 2.982l-.346.69zm0 18.62l-1.04-2.08L10 19l-2.08-1.04-1.04-2.08L7 15l2.08-1.04 2.08-1.04L12 11l1.04 2.08 1.04 2.08L17 15l-2.08 1.04-1.04 2.08L12 19l-1.04 1.04zM21.69 12l-.666.346L20 13.018l-.346.69-.346.666L18.982 15l.69-.346.666-.346L21.018 13l.69.346.666.346L22.02 12l-.69-.346zm-18.62 0l2.08-1.04 1.04-2.08L6 7l-2.08 1.04L2.98 9.02 3 10l-1.04 2.08L1 13l2.08 1.04L4 15l2.08-1.04L7 13l-1.04-2.08z"></path></svg>`,
