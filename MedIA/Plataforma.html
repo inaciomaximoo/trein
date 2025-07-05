@@ -41,7 +41,6 @@ body.dark-mode {
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-    /* Melhora a rolagem em dispositivos touch */
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -52,7 +51,7 @@ body {
 	min-height: 100vh;
 	display: flex;
 	justify-content: center;
-	align-items: flex-start; /* Alinha ao topo para melhor visualização em mobile */
+	align-items: flex-start; 
 	padding: 40px 15px;
 	transition: background-color var(--transition-speed), color var(--transition-speed);
 	user-select: none;
@@ -68,7 +67,7 @@ body.modal-active {
 .main-container {
     max-width: 850px;
     width: 100%;
-    padding-top: 20px; /* Espaço para não colar no topo */
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -116,7 +115,7 @@ body.modal-active {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 	gap: 25px;
-    margin-bottom: 30px; /* Espaço para o ranking */
+    margin-bottom: 30px;
 }
 
 /* =================================================================== */
@@ -239,53 +238,74 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
 /* =================================================================== */
 /* 6. RESPONSIVIDADE (MEDIA QUERIES)                                   */
 /* =================================================================== */
+
+/* Layout Fixo para Desktop (CORREÇÃO) */
+@media (min-width: 769px) {
+    .modules-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: min-content; /* Para as linhas se ajustarem ao conteúdo */
+    }
+    /* Forçando a ordem e o tamanho dos cards no desktop */
+    [data-module-id="agenda"] { grid-area: 1 / 1 / 2 / 3; }
+    [data-module-id="anamnese"] { grid-area: 1 / 3 / 2 / 4; }
+    [data-module-id="prontuario"] { grid-area: 2 / 1 / 3 / 2; }
+    [data-module-id="comunicacao"] { grid-area: 2 / 2 / 3 / 3; }
+    [data-module-id="prescricoes"] { grid-area: 2 / 3 / 3 / 4; }
+    [data-module-id="financeiro"] { grid-area: 3 / 1 / 4 / 2; }
+    [data-module-id="automacao"] { grid-area: 3 / 2 / 4 / 3; }
+    /* Posição corrigida para o painel de depoimentos */
+    [data-module-id="depoimentos"] { grid-area: 3 / 3 / 5 / 4; }
+    [data-module-id="assistenteIA"] { grid-area: 4 / 1 / 5 / 3; }
+}
+
 @media (max-width: 768px) {
 	body { padding: 0; justify-content: flex-start; }
-    .main-container { padding: 15px; }
-	.homepage-card { padding: 25px; border-radius: 0; min-height: 100vh; border-left: none; border-right: none; }
-	.dark-mode-toggle { top: 20px; right: 20px; width: 40px; height: 40px; }
-	.icon-container { width: 20px; height: 20px; }
-	.moon-icon, .sun-icon { font-size: 1.2rem; }
-	.app-header { padding-bottom: 25px; margin-bottom: 30px; }
-	#selectedAvatarDisplay { width: 90px; height: 90px; }
-	.edit-avatar-icon { width: 28px; height: 28px; }
-	.edit-avatar-icon svg { width: 14px; height: 14px; }
-	.app-title { font-size: 1.9rem; }
-	.app-subtitle { font-size: 1rem; }
-	.modules-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-    /* Faz cards importantes ocuparem a largura toda */
-	.module-card.span-2, .module-card-depoimentos, .module-card-ai { grid-column: span 2; }
-	.module-card { padding: 20px; }
-	.module-card-title { font-size: 1rem; }
-	.pin-modal-content, .module-modal-content, .avatar-modal-content-box, .depoimentos-modal-content-box { width: 95%; max-height: 90vh; padding: 25px; }
-	.module-modal-content h2, .depoimentos-modal-title { font-size: 1.5rem; }
-    /* Botões de ação em pares */
-    #moduleModalButtonsContainer { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .main-container { padding: 20px; }
+	.homepage-card { padding: 30px; border-radius: 0; min-height: 100dvh; border-left: none; border-right: none; }
+	.dark-mode-toggle { top: 20px; right: 20px; width: 44px; height: 44px; }
+	.icon-container { width: 22px; height: 22px; }
+	.moon-icon, .sun-icon { font-size: 1.4rem; }
+	.app-header { padding-bottom: 30px; margin-bottom: 35px; }
+	#selectedAvatarDisplay { width: 100px; height: 100px; }
+	.edit-avatar-icon { width: 32px; height: 32px; }
+	.edit-avatar-icon svg { width: 16px; height: 16px; }
+	.app-title { font-size: 2.1rem; }
+	.app-subtitle { font-size: 1.1rem; }
+	.modules-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+	.module-card.span-2, .module-card-depoimentos, .module-card.module-card-ai { grid-column: span 2; }
+	.module-card { padding: 25px; }
+    .module-card .section-icon { width: 40px; height: 40px; }
+	.module-card-title { font-size: 1.1rem; }
+	.pin-modal-content, .module-modal-content, .avatar-modal-content-box, .depoimentos-modal-content-box { width: 95%; max-height: 90vh; padding: 30px; }
+	.module-modal-content h2, .depoimentos-modal-title { font-size: 1.6rem; }
+    #moduleModalButtonsContainer { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .button-action { font-size: 1rem; padding: 16px 10px; }
 	#iframeViewer { padding: 0; }
 	.iframe-window { border-radius: 0; height: 100%; }
 }
 
 @media (max-width: 480px) {
-    .main-container { padding: 10px; }
-	.homepage-card { padding: 20px 15px; }
-	.app-header { padding-bottom: 20px; margin-bottom: 25px; }
-	#selectedAvatarDisplay { width: 80px; height: 80px; border-width: 3px; }
-	.app-title { font-size: 1.7rem; }
-	.app-subtitle { font-size: 0.9rem; }
-	.modules-grid { gap: 15px; }
-	.module-card { padding: 18px 15px; }
-    .module-card .section-icon { width: 30px; height: 30px; margin-bottom: 12px; }
-	.module-card-title { font-size: 0.9rem; } /* Título dos cards menor */
-    /* Garante que os botões tenham texto centralizado e não quebrem linha */
-    .button-action { padding: 12px 10px; font-size: 0.85rem; flex-direction: column; gap: 5px; }
-    .button-action svg { margin-right: 0; }
-    .pin-modal-content, .module-modal-content, .avatar-modal-content-box { width: 92%; }
-    .pin-modal-content h2, .module-modal-content h2, .depoimentos-modal-title { font-size: 1.3rem; }
-    .pin-modal-content p { font-size: 0.9rem; margin-bottom: 15px; }
-	#pinInput { padding: 12px; font-size: 1.4rem; margin-bottom: 15px; }
-	#submitPinButton { padding: 12px; font-size: 1rem; }
-	.avatar-grid { gap: 10px; grid-template-columns: repeat(auto-fit, minmax(65px, 1fr)); }
-    .depoimento-modal-slide .depoimento-texto { font-size: 0.9rem; }
+    .main-container { padding: 15px; }
+	.homepage-card { padding: 25px 20px; }
+	.app-header { margin-bottom: 30px; }
+	#selectedAvatarDisplay { width: 90px; height: 90px; }
+	.app-title { font-size: 1.9rem; }
+	.app-subtitle { font-size: 1rem; }
+	.modules-grid { gap: 18px; }
+    /* A maioria dos cards em dupla */
+    .module-card { padding: 20px; }
+    .module-card .section-icon { width: 38px; height: 38px; }
+	.module-card-title { font-size: 1rem; line-height: 1.3; }
+    .button-action { font-size: 0.9rem; padding: 14px 10px; }
+    .button-action svg { width: 20px; height: 20px; margin-right: 8px; }
+    .pin-modal-content, .module-modal-content, .avatar-modal-content-box { width: 92%; padding: 25px; }
+    .pin-modal-content h2, .module-modal-content h2, .depoimentos-modal-title { font-size: 1.5rem; }
+    .pin-modal-content p { font-size: 1rem; }
+	#pinInput { padding: 14px; font-size: 1.5rem; }
+	#submitPinButton { padding: 14px; font-size: 1.1rem; }
+	.avatar-grid { gap: 15px; grid-template-columns: repeat(auto-fit, minmax(75px, 1fr)); }
+    .depoimento-modal-slide .depoimento-texto { font-size: 1rem; }
 }
 </style>
 </head>
@@ -432,11 +452,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		for (const moduleId in CONFIG.modulesData) {
 			const module = CONFIG.modulesData[moduleId];
 			const card = document.createElement('div');	
-			card.className = 'module-card';	
+			card.className = 'module-card';
+            // Adiciona o atributo de dados para o CSS poder selecionar o card
+            card.dataset.moduleId = moduleId;
 			if (module.span2) { card.classList.add('span-2'); }
-			if (module.spanRows) { card.style.gridRow = `span ${module.spanRows}`; }
+			if (module.spanRows) { card.classList.add('span-rows-2'); } // Usar classe para consistência
 			if (module.specialStyle) { card.classList.add(`module-card-${module.specialStyle}`); }
-			card.dataset.moduleId = moduleId;	
 			card.style.animationDelay = `${cardIndex * 60}ms`;
 			
 			if (module.specialStyle === 'depoimentos') {
@@ -712,13 +733,7 @@ const CONFIG = {
             directAction: true,
 			actions: [ { name: 'Configurar Lembrete (WhatsApp)', url: 'https://inaciomaximoo.github.io/trein/MedIA/lembretes.html' } ]
 		},
-		'depoimentos': { 
-			title: 'Depoimentos', 
-			specialStyle: 'depoimentos', 
-			spanRows: 2, 
-			icon: '', 
-			actions: [] 
-		},
+        // A ordem aqui não importa mais para o layout do desktop, que agora é fixo com CSS.
 		'assistenteIA': {
 			title: 'Assistente IA',
 			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l.346.666L13.018 5l.69.346.666.346L15 6.018l.346-.69.346-.666L15.018 4l-.69-.346-.666-.346L13 2.982l-.346.69zm0 18.62l-1.04-2.08L10 19l-2.08-1.04-1.04-2.08L7 15l2.08-1.04 2.08-1.04L12 11l1.04 2.08 1.04 2.08L17 15l-2.08 1.04-1.04 2.08L12 19l-1.04 1.04zM21.69 12l-.666.346L20 13.018l-.346.69-.346.666L18.982 15l.69-.346.666-.346L21.018 13l.69.346.666.346L22.02 12l-.69-.346zm-18.62 0l2.08-1.04 1.04-2.08L6 7l-2.08 1.04L2.98 9.02 3 10l-1.04 2.08L1 13l2.08 1.04L4 15l2.08-1.04L7 13l-1.04-2.08z"></path></svg>`,
@@ -726,6 +741,13 @@ const CONFIG = {
 			directAction: true,
 			specialStyle: 'ai-assistant',
 			actions: [ { name: 'Abrir Assistente IA', url: 'https://poe.com/Gemini-1.5-Pro' } ]
+		},
+		'depoimentos': { 
+			title: 'Depoimentos', 
+			specialStyle: 'depoimentos', 
+			spanRows: 2, 
+			icon: '', 
+			actions: [] 
 		}
 	}
 };
