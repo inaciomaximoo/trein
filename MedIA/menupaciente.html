@@ -164,8 +164,55 @@ body.dark-mode .module-card-depoimentos:hover { box-shadow: 0 12px 25px var(--sh
 .depoimento-estrelas .cheia { color: var(--star-color); }
 .depoimento-nome { font-size: 0.9rem; font-weight: 600; opacity: 0.9; }
 
+/* --- Componente: Módulo Criativo --- */
+.module-card-creative {
+    display: flex;
+    padding: 25px;
+    align-items: center;
+    text-align: left;
+    gap: 25px;
+    cursor: default !important; /* Não é clicável */
+    background-image: 
+        radial-gradient(circle at 100% 0, transparent 20px, var(--primary-light) 20px, var(--primary-light) 21px, transparent 21px),
+        radial-gradient(circle at 0 100%, transparent 20px, var(--primary-light) 20px, var(--primary-light) 21px, transparent 21px);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.module-card-creative:hover, .module-card-creative:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-color: var(--border-color);
+}
+body.dark-mode .module-card-creative {
+    background-image: 
+        radial-gradient(circle at 100% 0, transparent 20px, rgba(124, 77, 255, 0.1) 20px, rgba(124, 77, 255, 0.1) 21px, transparent 21px),
+        radial-gradient(circle at 0 100%, transparent 20px, rgba(124, 77, 255, 0.1) 20px, rgba(124, 77, 255, 0.1) 21px, transparent 21px);
+}
+.creative-icon {
+    flex-shrink: 0;
+    color: var(--primary-color);
+}
+.creative-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+.creative-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+.creative-text strong {
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+body.dark-mode .creative-text strong {
+    color: var(--star-color);
+}
+
 /* --- Componente: Ranking de Médicos --- */
-.ranking-medicos-container { background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px 25px; transition: all var(--transition-speed); }
+.ranking-medicos-container { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px 25px; transition: all var(--transition-speed); margin-top: 30px; }
 .ranking-medicos-container h3 { font-size: 1.2rem; font-weight: 600; color: var(--text-primary); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
 .ranking-medicos-list { list-style: none; padding: 0; }
 .ranking-medicos-list li { display: flex; align-items: center; justify-content: space-between; padding: 10px 5px; border-radius: 8px; transition: background-color var(--transition-speed); }
@@ -245,13 +292,13 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: min-content;
     }
-    /* Layout Fixo para Desktop - Perfil do Paciente */
     [data-module-id="consultas"] { grid-area: 1 / 1 / 2 / 3; }
     [data-module-id="documentos"] { grid-area: 1 / 3 / 2 / 4; }
     [data-module-id="pagamentos"] { grid-area: 2 / 1 / 3 / 2; }
     [data-module-id="mensagens"] { grid-area: 2 / 2 / 3 / 3; }
     [data-module-id="dadosPessoais"] { grid-area: 2 / 3 / 3 / 4; }
     [data-module-id="assistenteIA"] { grid-area: 3 / 1 / 4 / 3; }
+    [data-module-id="colmeia"] { grid-area: 4 / 1 / 5 / 3; }
     [data-module-id="depoimentos"] { grid-area: 3 / 3 / 5 / 4; }
 }
 
@@ -273,10 +320,11 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
 	.app-title { font-size: 2.1rem; }
 	.app-subtitle { font-size: 1.1rem; }
 	.modules-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-	.module-card.span-2, .module-card-depoimentos, .module-card.module-card-ai { grid-column: span 2; }
+	.module-card.span-2, .module-card-depoimentos, .module-card.module-card-ai, .module-card-creative { grid-column: span 2; }
 	.module-card { padding: 25px; }
     .module-card .section-icon { width: 40px; height: 40px; }
 	.module-card-title { font-size: 1.1rem; }
+    .module-card-creative { flex-direction: column; text-align: center; gap: 15px; }
 	.pin-modal-content, .module-modal-content, .avatar-modal-content-box, .depoimentos-modal-content-box { width: 95%; max-height: 90vh; padding: 30px; }
 	.module-modal-content h2, .depoimentos-modal-title { font-size: 1.6rem; }
     #moduleModalButtonsContainer { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -326,7 +374,7 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
 				</div>
 			</div>
 			<h1 class="app-title">Meu Perfil de Paciente</h1>
-			<p class="app-subtitle">Olá, Ana Clara! Bem-vinda ao seu portal.</p>
+			<p class="app-subtitle">Olá, Max! Bem-vindo ao seu portal.</p>
 		</header>
 		<main id="modulesContainer" class="modules-grid"></main>
         <div id="rankingContainer"></div>
@@ -399,9 +447,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			slides[currentSlideIndex].classList.add('active');
 		}, 7000); 
 	}
-
-	function showPinEntryView() { ipBlockView.style.display = 'none'; pinEntryView.style.display = 'block'; pinInput.focus(); }
-	function showIpBlockView(ip) { pinEntryView.style.display = 'none'; ipBlockView.style.display = 'block'; userIpDisplay.textContent = ip ? `Seu IP: ${ip}`: "Não foi possível detectar IP."; }
 	
     function openIframeViewer(url) {
         if (url && url !== '#') {
@@ -464,7 +509,9 @@ document.addEventListener('DOMContentLoaded', () => {
 					return `<div class="depoimento-slide"><img src="${depoimento.foto}" alt="Foto de ${depoimento.nome}" class="depoimento-avatar"><p class="depoimento-texto">“${depoimento.comentario}”</p>${estrelasHtml}<p class="depoimento-nome">- ${depoimento.nome}</p></div>`;
 				}).join('');
 				card.innerHTML = `<h3 class="module-card-title">${module.title}</h3><div id="depoimentosSliderContainer" class="depoimentos-slider">${depoimentosHtml}</div>`;
-			} else {
+			} else if (module.specialStyle === 'creative') {
+                card.innerHTML = `<div class="creative-icon">${module.icon}</div><div class="creative-content"><h3 class="creative-title">${module.title}</h3><p class="creative-text">${module.text}</p></div>`;
+            } else {
 				card.innerHTML = `${module.icon}<h3 class="module-card-title">${module.title}</h3>`;
 			}
 			modulesContainer.appendChild(card);
@@ -473,7 +520,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
     
     function generateRankingMedicos() {
-        const rankingData = CONFIG.rankingMedicos.sort((a, b) => b.elogios - a.elogios);
+        const rankingData = CONFIG.rankingMedicos;
         let rankingHtml = `<div class="ranking-medicos-container"><h3>🏆 Médicos em Destaque</h3><ol class="ranking-medicos-list">`;
         rankingData.forEach((medico, index) => {
             let estrelasHtml = '';
@@ -541,23 +588,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 	
-	function grantAccess() { localStorage.setItem(CONFIG.localStorageKeyAccess, 'true'); showHomepageContent(); }
-
-	function handlePinSubmit() {
-		const enteredPin = pinInput.value.trim().toUpperCase();
-		if (CONFIG.validPins.includes(enteredPin)) { grantAccess(); }	
-		else {	
-			pinEntryView.style.animation = 'shake 0.5s';
-			setTimeout(() => { pinEntryView.style.animation = '' }, 500);
-			pinErrorMessage.textContent = 'PIN inválido. Tente novamente.';	
-			pinErrorMessage.style.visibility = 'visible';	
-			pinInput.value = '';	
-			pinInput.focus();	
-		}
-	}
-
-	async function verifyInitialAccess() {
-		// No Perfil do Paciente, o acesso é direto, sem PIN.
+	function verifyInitialAccess() {
         showHomepageContent();
 	}
 
@@ -571,14 +602,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	closeAvatarModalBtn.addEventListener('click', closeAvatarSelectionModal);
 	closeModuleModalBtn.addEventListener('click', closeModuleModal);
     closeDepoimentosModalBtn.addEventListener('click', closeDepoimentosModal);
-	submitPinButton.addEventListener('click', handlePinSubmit);
-	pinInput.addEventListener('keypress', (event) => { if (event.key === 'Enter') handlePinSubmit(); });
 	
 	modulesContainer.addEventListener('click', (event) => {
 		const card = event.target.closest('.module-card');
 		if (!card) return;
 		const moduleId = card.dataset.moduleId;
-		if (!moduleId) return;
+		if (!moduleId || (CONFIG.modulesData[moduleId] && CONFIG.modulesData[moduleId].specialStyle === 'creative')) return;
         
         if (moduleId === 'depoimentos') {
             openDepoimentosModal();
@@ -603,81 +632,84 @@ document.addEventListener('DOMContentLoaded', () => {
 // ARQUIVO DE CONFIGURAÇÃO - PERFIL DO PACIENTE
 // ===================================================================================
 const CONFIG = {
-	localStorageKeyAccess: 'accessGranted_paciente_v1', // Nova chave para não conflitar
 	darkModeKey: 'userDarkModePreference_paciente_v1',
 	localStorageKeyAvatar: 'pacienteSelectedAvatar_v1',
-	validPins: [], // Não necessário para paciente
 	avatarImageLinks: [ 
         "https://i.imgur.com/OhiZQww.png"
     ],
 	get defaultAvatar() { return this.avatarImageLinks[0]; },
     
-    // Ranking de médicos é útil para o paciente
     rankingMedicos: [
-        { nome: 'Dr. Max Lima', estrelas: 5, top: true }, { nome: 'Dra. Livia Andrade', estrelas: 5, top: false },
-        { nome: 'Dr. Carlos Borges', estrelas: 4, top: false }, { nome: 'Dra. Helena Costa', estrelas: 4, top: false },
-        { nome: 'Dr. Arthur Moreira', estrelas: 4, top: false }, { nome: 'Dra. Beatriz Santos', estrelas: 3, top: false },
+        { nome: 'Dr. Max ', estrelas: 5, top: true }, { nome: 'Dra. Livia ', estrelas: 5, top: false },
+        { nome: 'Dr. Carlos ', estrelas: 4, top: false }, { nome: 'Dra. Helena Costa', estrelas: 4, top: false },
+        { nome: 'Dr. Arthur Moreira', estrelas: 4, top: false },
     ],
 
-    // Depoimentos são úteis para o paciente
 	depoimentosData: [
-		{ 
-			nome: 'Beatriz Almeida', 
-			foto: 'https://i.imgur.com/rJXV7uR.png', 
-			comentario: 'A atenção e o cuidado do Dr. Max Lima foram excepcionais. A plataforma facilitou todo o processo, desde a marcação até o recebimento da receita digital.',
-			estrelas: 5
-		},
 		{ 
 			nome: 'Ricardo Gomes', 
 			foto: 'https://i.imgur.com/DaNsN4q.png',
-			comentario: 'Plataforma super moderna! O Dr. Max é um profissional incrível e muito atencioso. Receber os lembretes automáticos da consulta por WhatsApp fez toda a diferença na minha organização. Recomendo a todos!',
+			comentario: 'A Dra. Livia é uma profissional incrível e muito atenciosa. Recomendo a todos!',
 			estrelas: 5
 		},
 		{ 
 			nome: 'Juliana Ribeiro', 
 			foto: 'https://i.imgur.com/DXkoPU0.png',
-			comentario: 'Fui atendida pela Dra. Livia Andrade e a experiência foi maravilhosa. Ela é muito competente e humana. O sistema de prontuário eletrônico é muito prático e me senti segura com minhas informações.',
+			comentario: 'O Dr. Max é muito competente e humano. Me senti segura com as informações.',
+			estrelas: 5
+		},
+        { 
+			nome: 'Beatriz Almeida', 
+			foto: 'https://i.imgur.com/rJXV7uR.png', 
+			comentario: 'A atenção e o cuidado de toda a equipe foram excepcionais. A plataforma facilitou todo o processo.',
 			estrelas: 5
 		},
 	],
 
-    // --- MÓDULOS REFORMULADOS PARA O PACIENTE ---
 	modulesData: {
 		'consultas': {	
 			title: 'Minhas Consultas',	
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>`,
+			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>`,
 			span2: true,
 			actions: [ { name: 'Agendar Nova', url: '#' },	{ name: 'Ver Histórico', url: '#' } ]
 		},
 		'documentos': {	
 			title: 'Meus Documentos',	
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`,
+			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`,
 			actions: [ { name: 'Minhas Receitas', url: '#' }, { name: 'Resultados de Exames', url: '#' } ]
 		},
 		'pagamentos': {	
 			title: 'Financeiro',	
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>`,
+			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>`,
 			actions: [ { name: 'Ver Faturas', url: '#' }, { name: 'Histórico de Pagamentos', url: '#' } ]
 		},
         'mensagens': {	
 			title: 'Mensagens',	
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`,
+			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`,
 			directAction: true,
 			actions: [ { name: 'Falar com a Clínica', url: '#' } ]
 		},
 		'dadosPessoais': {
 			title: 'Meus Dados',
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`,
+			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`,
 			directAction: true,
 			actions: [ { name: 'Atualizar Cadastro', url: '#' } ]
 		},
 		'assistenteIA': {
 			title: 'Assistente Virtual',
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l.346.666L13.018 5l.69.346.666.346L15 6.018l.346-.69.346-.666L15.018 4l-.69-.346-.666-.346L13 2.982l-.346.69zm0 18.62l-1.04-2.08L10 19l-2.08-1.04-1.04-2.08L7 15l2.08-1.04 2.08-1.04L12 11l1.04 2.08 1.04 2.08L17 15l-2.08 1.04-1.04 2.08L12 19l-1.04 1.04zM21.69 12l-.666.346L20 13.018l-.346.69-.346.666L18.982 15l.69-.346.666-.346L21.018 13l.69.346.666.346L22.02 12l-.69-.346zm-18.62 0l2.08-1.04 1.04-2.08L6 7l-2.08 1.04L2.98 9.02 3 10l-1.04 2.08L1 13l2.08 1.04L4 15l2.08-1.04L7 13l-1.04-2.08z"></path></svg>`,
+			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l.346.666L13.018 5l.69.346.666.346L15 6.018l.346-.69.346-.666L15.018 4l-.69-.346-.666-.346L13 2.982l-.346.69zm0 18.62l-1.04-2.08L10 19l-2.08-1.04-1.04-2.08L7 15l2.08-1.04 2.08-1.04L12 11l1.04 2.08 1.04 2.08L17 15l-2.08 1.04-1.04 2.08L12 19l-1.04 1.04zM21.69 12l-.666.346L20 13.018l-.346.69-.346.666L18.982 15l.69-.346.666-.346L21.018 13l.69.346.666.346L22.02 12l-.69-.346zm-18.62 0l2.08-1.04 1.04-2.08L6 7l-2.08 1.04L2.98 9.02 3 10l-1.04 2.08L1 13l2.08 1.04L4 15l2.08-1.04L7 13l-1.04-2.08z"></path></svg>`,
 			span2: true,
 			directAction: true,
 			specialStyle: 'ai-assistant',
 			actions: [ { name: 'Tire suas Dúvidas com a IA', url: 'https://poe.com/Gemini-1.5-Pro' } ]
+		},
+        'colmeia': {
+			title: 'Nossa Colmeia de Cuidado',
+			icon: `<svg class="creative-icon" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.15 11.23c.43-.24.8-.63 1.08-1.08l.02-.03c.27-.45.44-.96.5-1.49h0a5.64 5.64 0 0 0-1.5-4.08l-.01-.01a5.64 5.64 0 0 0-4.08-1.5c-.53.06-1.04.23-1.49.5l-.03.02a5.55 5.55 0 0 0-1.08 1.08L3.14 17.58a2.12 2.12 0 0 0-.6 1.48v2.5a1 1 0 0 0 1 1h2.5a2.12 2.12 0 0 0 1.48-.6l11.23-11.23zM16.5 6.5l1 1"/><path d="M12.5 10.5l1 1"/><path d="M18.5 4.5l1 1"/><path d="M6.5 12.5l1 1"/><path d="M4.5 18.5l1 1"/><path d="M8.5 8.5l1 1"/></svg>`,
+			text: 'Assim como abelhas trabalham em harmonia, nossa equipe colabora no seu bem-estar. Este mês, já realizamos <strong>312</strong> atendimentos integrados para garantir o melhor plano de saúde para você.',
+			span2: true,
+			specialStyle: 'creative',
+            actions: []
 		},
 		'depoimentos': { 
 			title: 'Avalie nosso Atendimento', 
@@ -685,7 +717,7 @@ const CONFIG = {
 			spanRows: 2, 
 			icon: '', 
 			actions: [] 
-		}
+		},
 	}
 };
 </script>
