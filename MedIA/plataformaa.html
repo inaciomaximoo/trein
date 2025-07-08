@@ -51,6 +51,33 @@
         .mini-profile .icon { width: 30px; height: 30px; margin: 5px auto; color: var(--primary-color); opacity: 0.7; }
         .mini-profile p { font-size: 12px; font-weight: 500; }
 
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                align-items: flex-start;
+                padding-top: 5vh;
+            }
+            .animated-bg {
+                display: none; /* Hide background animation on mobile for performance and clarity */
+            }
+            .content-card {
+                padding: 30px 25px;
+                background-color: var(--bg-card); /* Use solid color on mobile */
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+            .app-title {
+                font-size: 1.8rem;
+            }
+            .app-subtitle {
+                font-size: 1rem;
+            }
+            .cta-button {
+                padding: 14px 35px;
+                font-size: 1rem;
+            }
+        }
+
     </style>
 </head>
 <body>
