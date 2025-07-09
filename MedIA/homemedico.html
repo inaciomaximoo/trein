@@ -23,7 +23,7 @@
 	--border-color: #d1d9e6;
 	--shadow-color: rgba(0, 0, 0, 0.1);
 	--transition-speed: 0.3s;
-} 
+}
 
 body.dark-mode {
 	--bg-main: #1e1e2f;
@@ -51,7 +51,7 @@ body {
 	min-height: 100vh;
 	display: flex;
 	justify-content: center;
-	align-items: flex-start; 
+	align-items: flex-start;
 	padding: 40px 15px;
 	transition: background-color var(--transition-speed), color var(--transition-speed);
 	user-select: none;
@@ -156,7 +156,7 @@ body.dark-mode .module-card-depoimentos:hover { box-shadow: 0 12px 25px var(--sh
 .depoimento-slide { position: absolute; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; opacity: 0; transform: translateY(15px); transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; }
 .depoimento-slide.active { opacity: 1; transform: translateY(0); }
 .depoimento-avatar { width: 70px; height: 70px; border-radius: 50%; border: 3px solid white; object-fit: cover; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.25); }
-.depoimento-texto { 
+.depoimento-texto {
     font-size: 0.95rem; font-style: italic; font-weight: 300; margin-bottom: 15px; line-height: 1.6; max-width: 90%;
     overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
 }
@@ -190,22 +190,34 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
 #pinInput:focus { border-color: var(--primary-color); box-shadow: 0 0 0 4px var(--primary-light); }
 #submitPinButton { width: 100%; padding: 14px; background: var(--primary-color); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
 #submitPinButton:hover, #submitPinButton:active { background-color: var(--primary-dark); transform: scale(1.02); }
-#pinErrorMessage { color: var(--danger-color); margin-top: 15px; visibility: hidden; }
+#pinErrorMessage { color: #ef4444; margin-top: 15px; visibility: hidden; }
 .module-modal-content { max-width: 450px; padding: 35px; text-align: center; }
 .module-modal-content h2 { font-size: 1.6rem; font-weight: 600; color: var(--primary-color); margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); }
 #moduleModalButtonsContainer { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; }
-.button-action { display: flex; align-items: center; justify-content: center; width: 100%; text-align: center; background: linear-gradient(45deg, var(--primary-color), var(--primary-dark)); color: white; padding: 14px 30px; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 1rem; transition: transform 0.2s ease, filter 0.2s ease; text-decoration: none; position: relative; }
+.button-action {
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    text-decoration: none;
+}
 .button-action:hover, .button-action:active { transform: translateY(-3px); filter: brightness(1.1); }
-.button-action svg { width: 18px; height: 18px; margin-right: 10px; }
 #closeModuleModalBtn, #closeDepoimentosModalBtn { display: inline-block; background-color: var(--text-secondary); color: white; padding: 10px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 0.9rem; transition: background-color 0.3s ease; }
 #closeModuleModalBtn:hover, #closeModuleModalBtn:active, #closeDepoimentosModalBtn:hover, #closeDepoimentosModalBtn:active { background-color: var(--text-primary); }
 .avatar-modal-content-box { max-width: 550px; padding: 35px; text-align: center; }
 .avatar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 20px; max-height: 60vh; overflow-y: auto; padding: 15px; background-color: var(--bg-main); border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 20px; }
 .avatar-option { padding-top: 100%; position: relative; border-radius: 12px; overflow: hidden; cursor: pointer; border: 4px solid transparent; transition: all 0.3s ease; }
 .avatar-option:hover, .avatar-option:active { transform: scale(1.05); border-color: var(--primary-light); }
-.avatar-option.selected-preview { border-color: var(--accent-color); transform: scale(1.05); }
+.avatar-option.selected-preview { border-color: var(--primary-color); transform: scale(1.05); }
 .avatar-option img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-#closeAvatarModalBtn { background: var(--danger-color); color: white; padding: 12px 28px; border: none; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
+#closeAvatarModalBtn { background: #ef4444; color: white; padding: 12px 28px; border: none; border-radius: 8px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
 #closeAvatarModalBtn:hover, #closeAvatarModalBtn:active { filter: brightness(1.1); transform: scale(1.05); }
 #iframeViewer { z-index: 3000; padding: 4vh 4vw; }
 .iframe-window { width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
@@ -236,7 +248,7 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
 @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
 
 /* =================================================================== */
-/* 6. RESPONSIVIDADE (MEDIA QUERIES)                                   */
+/* 6. RESPONSIVIDADE (MEDIA QUERIES)                                     */
 /* =================================================================== */
 
 @media (min-width: 769px) {
@@ -259,10 +271,10 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
 @media (max-width: 768px) {
 	body { padding: 0; justify-content: flex-start; align-items: flex-start; }
     .main-container { padding: 15px; }
-	.homepage-card { 
-        padding: 30px; 
-        min-height: auto; /* Deixa o conteúdo definir a altura */
-        border-radius: 24px; /* Cantos arredondados */
+	.homepage-card {
+        padding: 30px;
+        min-height: auto;
+        border-radius: 24px;
     }
 	.dark-mode-toggle { top: 20px; right: 20px; width: 44px; height: 44px; }
 	.icon-container { width: 22px; height: 22px; }
@@ -298,7 +310,6 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
     .module-card .section-icon { width: 38px; height: 38px; }
 	.module-card-title { font-size: 1rem; line-height: 1.3; }
     .button-action { font-size: 0.9rem; padding: 14px 10px; }
-    .button-action svg { width: 20px; height: 20px; margin-right: 8px; }
     .pin-modal-content, .module-modal-content, .avatar-modal-content-box { width: 92%; padding: 25px; }
     .pin-modal-content h2, .module-modal-content h2, .depoimentos-modal-title { font-size: 1.5rem; }
     .pin-modal-content p { font-size: 1rem; }
@@ -321,7 +332,7 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
 		</div>
 		<header class="app-header">
 			<div class="header-avatar-container" id="headerAvatarContainer" title="Clique para mudar o avatar">
-				<img id="selectedAvatarDisplay" src="https://i.imgur.com/cKp6Cpy.png" alt="Avatar">
+				<img id="selectedAvatarDisplay" src="" alt="Avatar">
 				<div class="edit-avatar-icon">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
 				</div>
@@ -341,6 +352,58 @@ li.top-rank .medico-nome { font-weight: 600; color: var(--text-primary); }
 <div id="depoimentosModalOverlay" class="depoimentos-modal-overlay" style="display: none;"><div class="depoimentos-modal-content-box"><h2 class="depoimentos-modal-title">Depoimentos de Pacientes</h2><div id="depoimentosModalSlider" class="depoimentos-modal-slider"></div><button id="closeDepoimentosModalBtn">Fechar</button></div></div>
 
 
+<script>
+// ===================================================================================
+// ARQUIVO DE CONFIGURAÇÃO - MODIFIQUE AQUI
+// ===================================================================================
+const CONFIG = {
+	localStorageKeyAccess: 'accessGranted_gestaoMedica_v1',
+	darkModeKey: 'userDarkModePreference_gestaoMedica_v1',
+	localStorageKeyAvatar: 'medAppSelectedAvatar_gestaoMedica_v1',
+	authorizedIPs: [],	
+	validPins: ["MED2025", "GESTOR123"],
+    // ATUALIZAÇÃO: URLs dos avatares padrão para cada tema
+	defaultAvatarLight: "https://i.imgur.com/Y60YeH1.png",
+    defaultAvatarDark: "https://i.imgur.com/cKp6Cpy.png",
+	avatarImageLinks: [
+        "https://i.imgur.com/Y60YeH1.png",
+        "https://i.imgur.com/cKp6Cpy.png",
+        "https://i.imgur.com/8xL2sSj.png",
+        "https://i.imgur.com/DaNsN4q.png",
+        "https://i.imgur.com/rJXV7uR.png"
+    ],
+    
+    rankingMedicos: [
+        { nome: 'Dr. Max ', estrelas: 5, top: true }, { nome: 'Dra. Livia ', estrelas: 5, top: false },
+        { nome: 'Dr. Carlos ', estrelas: 4, top: false }, { nome: 'Dra. Helena ', estrelas: 4, top: false },
+        { nome: 'Dr. Arthur Moreira', estrelas: 4, top: false }, { nome: 'Dra. Beatriz ', estrelas: 3, top: false },
+    ],
+
+	depoimentosData: [
+		{ nome: 'Beatriz Almeida', foto: 'https://i.imgur.com/rJXV7uR.png', comentario: 'A atenção e o cuidado do Dr. Max Lima foram excepcionais. Ele não apenas resolveu meu problema de saúde, mas também me explicou cada detalhe do tratamento. A plataforma facilitou todo o processo, desde a marcação até o recebimento da receita digital.', estrelas: 5 },
+		{ nome: 'Ricardo Gomes', foto: 'https://i.imgur.com/DaNsN4q.png', comentario: 'Plataforma super moderna! O Dr. Max é um profissional incrível e muito atencioso. Receber os lembretes automáticos da consulta por WhatsApp fez toda a diferença na minha organização. Recomendo a todos!', estrelas: 5 },
+		{ nome: 'Juliana Ribeiro', foto: 'https://i.imgur.com/DXkoPU0.png', comentario: 'Fui atendida pela Dra. Livia Andrade e a experiência foi maravilhosa. Ela é muito competente e humana. O sistema de prontuário eletrônico é muito prático e me senti segura com minhas informações.', estrelas: 5 },
+		{ nome: 'Fernando Martins', foto: 'https://i.imgur.com/5jDryIk.png', comentario: 'Sistema muito eficiente. Facilita a comunicação e o acesso a todo o histórico de tratamento. Adorei a funcionalidade de prescrição digital, que chega direto no meu celular. Parabéns à equipe.', estrelas: 4 },
+        { nome: 'Camila Souza', foto: 'https://i.imgur.com/ya6quMM.png', comentario: 'O Dr. Carlos Borges foi extremamente profissional e o diagnóstico foi muito preciso. A plataforma é intuitiva e torna a experiência do paciente muito mais agradável e menos burocrática.', estrelas: 5 },
+        { nome: 'Lucas Andrade', foto: 'https://i.imgur.com/1G7xknr.png', comentario: 'Tive uma consulta com o Dr. Max e fiquei impressionado com a organização. Tudo funciona perfeitamente, desde a agenda online até o assistente IA que ajuda a tirar dúvidas rápidas. Tecnologia a serviço da saúde!', estrelas: 5 },
+        { nome: 'Amanda Costa', foto: 'https://i.imgur.com/Il4owIz.png', comentario: 'A Dra. Helena Costa é uma médica fantástica. Ela me ouviu com paciência e me deixou muito confortável durante a consulta. O sistema de gestão da clínica é um exemplo a ser seguido.', estrelas: 5 },
+        { nome: 'Tiago Pereira', foto: 'https://i.imgur.com/P95Sxw6.png', comentario: 'Utilizei o serviço de automação de lembretes e achei sensacional. Nunca mais esqueci um horário. A equipe, em especial o Dr. Max, está de parabéns pela inovação e pelo cuidado com os pacientes.', estrelas: 5 },
+        { nome: 'Sofia Lima', foto: 'https://i.imgur.com/ISp1O9O.png', comentario: 'O painel financeiro é muito transparente e fácil de usar para controlar os pagamentos. A Dra. Livia é uma profissional exemplar. Estou muito satisfeita com todo o atendimento.', estrelas: 4 }
+	],
+
+	modulesData: {
+		'agenda': { title: 'Agenda Inteligente', icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>`, span2: true, actions: [ { name: 'Ver Agenda', url: 'https://inaciomaximoo.github.io/trein/MedIA/agenda.html' }, { name: 'Nova Consulta', url: 'https://inaciomaximoo.github.io/trein/MedIA/agenda.html' } ] },
+		'anamnese': { title: 'Anamnese Digital', icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>`, actions: [ { name: 'Preencher Nova', url: 'https://inaciomaximoo.github.io/trein/MedIA/anamnese.html' }, { name: 'Buscar', url: 'https://inaciomaximoo.github.io/trein/MedIA/anamnese.html' } ] },
+		'prontuario': { title: 'Prontuário Eletrônico', icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>`, actions: [ { name: 'Buscar Paciente', url: '#' }, { name: 'Novo Paciente', url: '#' } ] },
+		'comunicacao': { title: 'Comunicação', icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`, actions: [ { name: 'Enviar Lembrete', url: '#' }, { name: 'Avisos Gerais', url: '#' } ] },
+		'prescricoes': { title: 'Prescrições Digitais', icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>`, actions: [ { name: 'Criar Prescrição', url: '#' }, { name: 'Buscar Histórico', url: '#' } ] },
+		'financeiro': { title: 'Painel Financeiro', icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>`, actions: [ { name: 'Calcular Ganhos', url: '#' }, { name: 'Relatórios', url: '#' } ] },
+		'automacao': { title: 'Automação de Lembretes', icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"></path><path d="M22 2L15 22L11 13L2 9L22 2z"></path></svg>`, directAction: true, actions: [ { name: 'Configurar Lembrete (WhatsApp)', url: 'https://inaciomaximoo.github.io/trein/MedIA/lembretes.html' } ] },
+		'assistenteIA': { title: 'Assistente IA', icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l.346.666L13.018 5l.69.346.666.346L15 6.018l.346-.69.346-.666L15.018 4l-.69-.346-.666-.346L13 2.982l-.346.69zm0 18.62l-1.04-2.08L10 19l-2.08-1.04-1.04-2.08L7 15l2.08-1.04 2.08-1.04L12 11l1.04 2.08 1.04 2.08L17 15l-2.08 1.04-1.04 2.08L12 19l-1.04 1.04zM21.69 12l-.666.346L20 13.018l-.346.69-.346.666L18.982 15l.69-.346.666-.346L21.018 13l.69.346.666.346L22.02 12l-.69-.346zm-18.62 0l2.08-1.04 1.04-2.08L6 7l-2.08 1.04L2.98 9.02 3 10l-1.04 2.08L1 13l2.08 1.04L4 15l2.08-1.04L7 13l-1.04-2.08z"></path></svg>`, span2: true, directAction: true, specialStyle: 'ai-assistant', actions: [ { name: 'Abrir Assistente IA', url: 'https://poe.com/Gemini-1.5-Pro' } ] },
+		'depoimentos': { title: 'Depoimentos', specialStyle: 'depoimentos', spanRows: 2, icon: '', actions: [] }
+	}
+};
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 	// Seletores de Elementos DOM
@@ -372,10 +435,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const depoimentosModalSlider = document.getElementById('depoimentosModalSlider');
     const closeDepoimentosModalBtn = document.getElementById('closeDepoimentosModalBtn');
 
-    let modalSliderIntervalId = null; 
+    let modalSliderIntervalId = null;
 
-	function applyDarkMode(isDark) { bodyElement.classList.toggle('dark-mode', isDark); localStorage.setItem(CONFIG.darkModeKey, isDark); }
-	function toggleDarkModePreference() { applyDarkMode(!bodyElement.classList.contains('dark-mode')); }
+    // ATUALIZAÇÃO: Função de tema agora também gerencia o avatar padrão
+	function applyDarkMode(isDark) {
+        bodyElement.classList.toggle('dark-mode', isDark);
+        localStorage.setItem(CONFIG.darkModeKey, isDark);
+
+        const userHasChosenAvatar = localStorage.getItem(CONFIG.localStorageKeyAvatar);
+
+        // Só altera o avatar se o usuário NÃO tiver feito uma escolha personalizada
+        if (!userHasChosenAvatar) {
+            selectedAvatarDisplay.src = isDark ? CONFIG.defaultAvatarDark : CONFIG.defaultAvatarLight;
+        }
+    }
+
+	function toggleDarkModePreference() {
+        applyDarkMode(!bodyElement.classList.contains('dark-mode'));
+    }
 	
 	function showHomepageContent() {
 		pinModalContainer.style.display = 'none';
@@ -389,7 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function iniciarSliderDepoimentos() {
 		const container = document.getElementById('depoimentosSliderContainer');
-		if (!container) return; 
+		if (!container) return;
 		const slides = container.querySelectorAll('.depoimento-slide');
 		if (slides.length <= 1) return;
 		let currentSlideIndex = 0;
@@ -398,7 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			slides[currentSlideIndex].classList.remove('active');
 			currentSlideIndex = (currentSlideIndex + 1) % slides.length;
 			slides[currentSlideIndex].classList.add('active');
-		}, 7000); 
+		}, 7000);
 	}
 
 	function showPinEntryView() { ipBlockView.style.display = 'none'; pinEntryView.style.display = 'block'; pinInput.focus(); }
@@ -422,13 +499,29 @@ document.addEventListener('DOMContentLoaded', () => {
         homepageCard.style.display = 'block';
     }
 
-	function loadAndDisplaySelectedAvatar() { const savedAvatarUrl = localStorage.getItem(CONFIG.localStorageKeyAvatar) || CONFIG.defaultAvatar; selectedAvatarDisplay.src = savedAvatarUrl; }
+    // ATUALIZAÇÃO: Lógica para carregar o avatar correto na inicialização
+	function loadAndDisplaySelectedAvatar() {
+        const savedAvatarUrl = localStorage.getItem(CONFIG.localStorageKeyAvatar);
+        if (savedAvatarUrl) {
+            selectedAvatarDisplay.src = savedAvatarUrl;
+        } else {
+            // Se nenhum avatar foi salvo, usa o padrão do tema atual
+            const isDarkMode = bodyElement.classList.contains('dark-mode');
+            selectedAvatarDisplay.src = isDarkMode ? CONFIG.defaultAvatarDark : CONFIG.defaultAvatarLight;
+        }
+    }
 
 	function populateAvatarGrid() {
 		avatarGrid.innerHTML = '';
 		CONFIG.avatarImageLinks.forEach(url => {
 			const avatarWrapper = document.createElement('div'); avatarWrapper.className = 'avatar-option'; const img = document.createElement('img'); img.src = url; img.alt = 'Avatar';
-			img.addEventListener('click', () => { localStorage.setItem(CONFIG.localStorageKeyAvatar, url); selectedAvatarDisplay.src = url; document.querySelectorAll('.avatar-option.selected-preview').forEach(el => el.classList.remove('selected-preview')); img.parentElement.classList.add('selected-preview'); setTimeout(closeAvatarSelectionModal, 300); });
+			img.addEventListener('click', () => {
+                localStorage.setItem(CONFIG.localStorageKeyAvatar, url); // Salva a escolha do usuário
+                selectedAvatarDisplay.src = url;
+                document.querySelectorAll('.avatar-option.selected-preview').forEach(el => el.classList.remove('selected-preview'));
+                img.parentElement.classList.add('selected-preview');
+                setTimeout(closeAvatarSelectionModal, 300);
+            });
 			avatarWrapper.appendChild(img); avatarGrid.appendChild(avatarWrapper);
 		});
 	}
@@ -490,12 +583,12 @@ document.addEventListener('DOMContentLoaded', () => {
         bodyElement.classList.add('modal-active');
 		moduleModalTitle.textContent = module.title;	
 		moduleModalButtonsContainer.innerHTML = '';	
-		const actionIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>`;
 		module.actions.forEach(action => {	
 			const button = document.createElement('button');	
 			button.className = 'button-action';	
-			button.dataset.url = action.url;	
-			button.innerHTML = `${actionIcon} ${action.name}`;
+			button.dataset.url = action.url;
+            // ATUALIZAÇÃO: Ícone removido do botão
+			button.innerHTML = action.name;
 			moduleModalButtonsContainer.appendChild(button);	
 		});
 		moduleModalOverlay.style.display = 'flex';
@@ -575,10 +668,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		} catch (error) { console.error("Erro ao verificar IP:", error); showIpBlockView(null); }
 	}
 
+    // Lógica de inicialização do tema
 	const savedDarkMode = localStorage.getItem(CONFIG.darkModeKey);
-	if (savedDarkMode !== null) { applyDarkMode(savedDarkMode === 'true'); }	
-	else { applyDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches); }
+	if (savedDarkMode !== null) {
+        applyDarkMode(savedDarkMode === 'true');
+    } else {
+        applyDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
 	
+    // Listeners de eventos
     darkModeToggleButton.addEventListener('click', toggleDarkModePreference);
 	closeIframeButton.addEventListener('click', closeIframeViewer);
 	headerAvatarContainer.addEventListener('click', openAvatarSelectionModal);
@@ -610,141 +708,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	verifyInitialAccess();
 });
-</script>
-
-<script>
-// ===================================================================================
-// ARQUIVO DE CONFIGURAÇÃO - MODIFIQUE AQUI
-// ===================================================================================
-const CONFIG = {
-	localStorageKeyAccess: 'accessGranted_gestaoMedica_v1',
-	darkModeKey: 'userDarkModePreference_gestaoMedica_v1',
-	localStorageKeyAvatar: 'medAppSelectedAvatar_gestaoMedica_v1',
-	authorizedIPs: [],	
-	validPins: ["MED2025", "GESTOR123"],
-	avatarImageLinks: [ 
-        "https://i.imgur.com/cKp6Cpy.png"
-    ],
-	get defaultAvatar() { return this.avatarImageLinks[0]; },
-    
-    rankingMedicos: [
-        { nome: 'Dr. Max ', estrelas: 5, top: true }, { nome: 'Dra. Livia ', estrelas: 5, top: false },
-        { nome: 'Dr. Carlos ', estrelas: 4, top: false }, { nome: 'Dra. Helena ', estrelas: 4, top: false },
-        { nome: 'Dr. Arthur Moreira', estrelas: 4, top: false }, { nome: 'Dra. Beatriz ', estrelas: 3, top: false },
-    ],
-
-	depoimentosData: [
-		{ 
-			nome: 'Beatriz Almeida', 
-			foto: 'https://i.imgur.com/rJXV7uR.png', 
-			comentario: 'A atenção e o cuidado do Dr. Max Lima foram excepcionais. Ele não apenas resolveu meu problema de saúde, mas também me explicou cada detalhe do tratamento. A plataforma facilitou todo o processo, desde a marcação até o recebimento da receita digital.',
-			estrelas: 5
-		},
-		{ 
-			nome: 'Ricardo Gomes', 
-			foto: 'https://i.imgur.com/DaNsN4q.png',
-			comentario: 'Plataforma super moderna! O Dr. Max é um profissional incrível e muito atencioso. Receber os lembretes automáticos da consulta por WhatsApp fez toda a diferença na minha organização. Recomendo a todos!',
-			estrelas: 5
-		},
-		{ 
-			nome: 'Juliana Ribeiro', 
-			foto: 'https://i.imgur.com/DXkoPU0.png',
-			comentario: 'Fui atendida pela Dra. Livia Andrade e a experiência foi maravilhosa. Ela é muito competente e humana. O sistema de prontuário eletrônico é muito prático e me senti segura com minhas informações.',
-			estrelas: 5
-		},
-		{
-			nome: 'Fernando Martins',
-			foto: 'https://i.imgur.com/5jDryIk.png',
-			comentario: 'Sistema muito eficiente. Facilita a comunicação e o acesso a todo o histórico de tratamento. Adorei a funcionalidade de prescrição digital, que chega direto no meu celular. Parabéns à equipe.',
-			estrelas: 4
-		},
-        { 
-			nome: 'Camila Souza', 
-			foto: 'https://i.imgur.com/ya6quMM.png',
-			comentario: 'O Dr. Carlos Borges foi extremamente profissional e o diagnóstico foi muito preciso. A plataforma é intuitiva e torna a experiência do paciente muito mais agradável e menos burocrática.',
-			estrelas: 5
-		},
-        { 
-			nome: 'Lucas Andrade', 
-			foto: 'https://i.imgur.com/1G7xknr.png',
-			comentario: 'Tive uma consulta com o Dr. Max e fiquei impressionado com a organização. Tudo funciona perfeitamente, desde a agenda online até o assistente IA que ajuda a tirar dúvidas rápidas. Tecnologia a serviço da saúde!',
-			estrelas: 5
-		},
-        { 
-			nome: 'Amanda Costa', 
-			foto: 'https://i.imgur.com/Il4owIz.png',
-			comentario: 'A Dra. Helena Costa é uma médica fantástica. Ela me ouviu com paciência e me deixou muito confortável durante a consulta. O sistema de gestão da clínica é um exemplo a ser seguido.',
-			estrelas: 5
-		},
-        { 
-			nome: 'Tiago Pereira', 
-			foto: 'https://i.imgur.com/P95Sxw6.png',
-			comentario: 'Utilizei o serviço de automação de lembretes e achei sensacional. Nunca mais esqueci um horário. A equipe, em especial o Dr. Max, está de parabéns pela inovação e pelo cuidado com os pacientes.',
-			estrelas: 5
-		},
-        { 
-			nome: 'Sofia Lima', 
-			foto: 'https://i.imgur.com/ISp1O9O.png',
-			comentario: 'O painel financeiro é muito transparente e fácil de usar para controlar os pagamentos. A Dra. Livia é uma profissional exemplar. Estou muito satisfeita com todo o atendimento.',
-			estrelas: 4
-		}
-	],
-
-	modulesData: {
-		'agenda': {	
-			title: 'Agenda Inteligente',	
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>`,
-			span2: true,
-			actions: [ { name: 'Ver Agenda', url: 'https://inaciomaximoo.github.io/trein/MedIA/agenda.html' },	{ name: 'Nova Consulta', url: 'https://inaciomaximoo.github.io/trein/MedIA/agenda.html' } ]
-		},
-		'anamnese': {	
-			title: 'Anamnese Digital',	
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>`,
-			actions: [ { name: 'Preencher Nova', url: 'https://inaciomaximoo.github.io/trein/MedIA/anamnese.html' }, { name: 'Buscar', url: 'https://inaciomaximoo.github.io/trein/MedIA/anamnese.html' } ]
-		},
-		'prontuario': {	
-			title: 'Prontuário Eletrônico',	
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>`,
-			actions: [ { name: 'Buscar Paciente', url: '#' }, { name: 'Novo Paciente', url: '#' } ]
-		},
-		'comunicacao': {	
-			title: 'Comunicação',	
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`,
-			actions: [ { name: 'Enviar Lembrete', url: '#' }, { name: 'Avisos Gerais', url: '#' } ]
-		},
-		'prescricoes': {
-			title: 'Prescrições Digitais',
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>`,
-			 actions: [ { name: 'Criar Prescrição', url: '#' }, { name: 'Buscar Histórico', url: '#' } ]
-		},
-		'financeiro': {	
-			title: 'Painel Financeiro',	
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>`,
-			actions: [ { name: 'Calcular Ganhos', url: '#' }, { name: 'Relatórios', url: '#' } ]	
-		},
-		'automacao': {	
-			title: 'Automação de Lembretes',
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"></path><path d="M22 2L15 22L11 13L2 9L22 2z"></path></svg>`,
-            directAction: true,
-			actions: [ { name: 'Configurar Lembrete (WhatsApp)', url: 'https://inaciomaximoo.github.io/trein/MedIA/lembretes.html' } ]
-		},
-		'assistenteIA': {
-			title: 'Assistente IA',
-			icon: `<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l.346.666L13.018 5l.69.346.666.346L15 6.018l.346-.69.346-.666L15.018 4l-.69-.346-.666-.346L13 2.982l-.346.69zm0 18.62l-1.04-2.08L10 19l-2.08-1.04-1.04-2.08L7 15l2.08-1.04 2.08-1.04L12 11l1.04 2.08 1.04 2.08L17 15l-2.08 1.04-1.04 2.08L12 19l-1.04 1.04zM21.69 12l-.666.346L20 13.018l-.346.69-.346.666L18.982 15l.69-.346.666-.346L21.018 13l.69.346.666.346L22.02 12l-.69-.346zm-18.62 0l2.08-1.04 1.04-2.08L6 7l-2.08 1.04L2.98 9.02 3 10l-1.04 2.08L1 13l2.08 1.04L4 15l2.08-1.04L7 13l-1.04-2.08z"></path></svg>`,
-			span2: true,
-			directAction: true,
-			specialStyle: 'ai-assistant',
-			actions: [ { name: 'Abrir Assistente IA', url: 'https://poe.com/Gemini-1.5-Pro' } ]
-		},
-		'depoimentos': { 
-			title: 'Depoimentos', 
-			specialStyle: 'depoimentos', 
-			spanRows: 2, 
-			icon: '', 
-			actions: [] 
-		}
-	}
-};
 </script>
 
 </body>
