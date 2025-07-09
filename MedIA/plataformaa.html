@@ -113,10 +113,41 @@
         #iframeModal { z-index: 1000; }
         .iframe-modal-content { position: relative; width: 100%; height: 100%; background-color: #fff; border-radius: 10px; overflow: hidden; }
         .iframe-modal-content iframe { width: 100%; height: 100%; border: none; }
-        #iframeModal .modal-close { position: absolute; top: 15px; right: 15px; width: 42px; height: 42px; background: rgba(0, 0, 0, 0.2); border: none; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; padding: 0; transition: background-color 0.3s ease, transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); }
-        #iframeModal .modal-close:hover { background: rgba(0, 0, 0, 0.5); transform: scale(1.1); }
-        #iframeModal .modal-close span { font-size: 32px; color: white; line-height: 1; font-weight: 300; display: block; text-shadow: 0 1px 2px rgba(0,0,0,0.2); transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); }
-        #iframeModal .modal-close:hover span { transform: rotate(90deg); }
+        
+        /* ATUALIZAÇÃO: Botão de fechar do iframe movido para a esquerda */
+        #iframeModal .modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px; /* Alterado de 'right' para 'left' */
+            width: 42px;
+            height: 42px;
+            background: rgba(0, 0, 0, 0.2);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            transition: background-color 0.3s ease, transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        #iframeModal .modal-close:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+        }
+        #iframeModal .modal-close span {
+            font-size: 32px;
+            color: white;
+            line-height: 1;
+            font-weight: 300;
+            display: block;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        #iframeModal .modal-close:hover span {
+            transform: rotate(90deg);
+        }
         
         #imageViewerModal { z-index: 1001; }
         #imageViewerModal .modal-close { color: white; font-size: 40px; text-shadow: 0 0 8px rgba(0,0,0,0.8); }
@@ -134,15 +165,20 @@
             
             #iframeModal { padding: 0; }
             #iframeModal .iframe-modal-content { border-radius: 0; }
-            #iframeModal .modal-close { top: 10px; right: 10px; background-color: rgba(0, 0, 0, 0.4); }
             
-            /* --- NOVO: Layout dos botões no pop-up mobile --- */
+            /* ATUALIZAÇÃO: Botão de fechar do iframe movido para a esquerda no mobile */
+            #iframeModal .modal-close {
+                top: 10px;
+                left: 10px; /* Alterado de 'right' para 'left' */
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+            
             .choice-modal-content .choice-button-container {
-                flex-direction: row; /* Alinha os botões lado a lado */
-                justify-content: center; /* Centraliza os botões no container */
+                flex-direction: row;
+                justify-content: center;
             }
             .choice-modal-content .cta-button {
-                flex-grow: 1; /* Faz os botões dividirem o espaço */
+                flex-grow: 1;
             }
         }
     </style>
@@ -191,13 +227,11 @@
         const imageViewerModal = document.getElementById('imageViewerModal');
         const viewerImage = document.getElementById('viewerImage');
 
-        // NOVO: Flag para controlar o retorno ao modal de escolha
         let returnToChoiceModal = false;
 
         function lockScroll() { document.body.style.overflow = 'hidden'; }
         function unlockScroll() { document.body.style.overflow = 'auto'; }
 
-        // Funções de abrir e fechar modais com controle de scroll
         function openChoiceModal() {
             choiceModal.style.display = 'flex';
             lockScroll();
@@ -226,11 +260,10 @@
             iframeModal.style.display = 'none';
             iframe.src = '';
 
-            // Lógica de retorno inteligente
             if (returnToChoiceModal) {
-                openChoiceModal(); // Reabre o modal de escolha, o scroll continua travado.
+                openChoiceModal();
             } else {
-                unlockScroll(); // Libera o scroll se não estiver voltando para o modal de escolha.
+                unlockScroll();
             }
         }
 
@@ -242,24 +275,21 @@
         function closeImageViewer() {
             imageViewerModal.style.display = 'none';
             viewerImage.src = '';
-            // Libera o scroll apenas se nenhum outro modal estiver ativo
             if (iframeModal.style.display === 'none' && worksModal.style.display === 'none') {
                 unlockScroll();
             }
         }
 
-        // Funções combinadas que definem o contexto
         function showExample(url) {
-            returnToChoiceModal = true; // Define o contexto
+            returnToChoiceModal = true;
             closeChoiceModal();
             openIframeModal(url);
         }
         function showWork(url) {
-            returnToChoiceModal = false; // Define o contexto
+            returnToChoiceModal = false;
             openIframeModal(url);
         }
 
-        // Listeners globais para fechar modais
         window.onclick = function(event) {
             if (event.target == choiceModal) closeChoiceModal();
             if (event.target == worksModal) closeWorksModal();
@@ -269,7 +299,6 @@
         
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
-                // Fecha o modal que estiver ativo
                 if(iframeModal.style.display === 'flex') closeIframeModal();
                 else if(choiceModal.style.display === 'flex') closeChoiceModal();
                 else if(worksModal.style.display === 'flex') closeWorksModal();
@@ -277,7 +306,6 @@
             }
         });
 
-        // Toggle do Modo Noturno
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
         }
